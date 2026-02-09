@@ -4,6 +4,7 @@ CREATE TABLE objets (
   categorie_id INT NOT NULL,
   nom VARCHAR(100) NOT NULL,
   description TEXT,
+  date_ajout TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   prix DECIMAL(10, 2) NOT NULL,
   FOREIGN KEY (proprietaire_id) REFERENCES user(id),
   FOREIGN KEY (categorie_id) REFERENCES categorie(id)
