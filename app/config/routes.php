@@ -26,5 +26,11 @@ $router->group('', function(Router $router) use ($app) {
 		$router->get('/users/@id:[0-9]', [ ApiExampleController::class, 'getUser' ]);
 		$router->post('/users/@id:[0-9]', [ ApiExampleController::class, 'updateUser' ]);
 	});
+
+	$router->group('/objet', function() use ($router) {
+		$router->get('/mesObjets', [ 'app\controllers\ObjetController', 'myObjects' ]);
+		$router->get('/@id:[0-9]+', [ 'app\controllers\ObjetController', 'getObjectById' ]);
+		$router->get('/accueil', [ 'app\controllers\ObjetController', 'getObjectHorsProprietaire' ]);
+	});
 	
 }, [ SecurityHeadersMiddleware::class ]);

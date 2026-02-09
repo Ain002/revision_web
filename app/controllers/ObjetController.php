@@ -41,7 +41,7 @@ class ObjetController {
         ]);
     }
 
-    public function getObjectHorsProprietaire($id) {
+    public function getObjectHorsProprietaire() {
         $objetModel = new ObjetModel();
         $objet = $objetModel->getObjectHorsProprietaire($id);
         if (!$objet) {
