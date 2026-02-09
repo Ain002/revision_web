@@ -1,6 +1,7 @@
 <?php
 
 use app\controllers\ApiExampleController;
+use app\controllers\ObjetController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
 use flight\net\Router;
@@ -28,9 +29,9 @@ $router->group('', function(Router $router) use ($app) {
 	});
 
 	$router->group('/objet', function() use ($router) {
-		$router->get('/mesObjets', [ 'app\controllers\ObjetController', 'myObjects' ]);
-		$router->get('/@id:[0-9]+', [ 'app\controllers\ObjetController', 'getObjectById' ]);
-		$router->get('/accueil', [ 'app\controllers\ObjetController', 'getObjectHorsProprietaire' ]);
+		$router->get('/mesObjets', [ ObjetController::class, 'myObjects' ]);
+		$router->get('/@id:[0-9]+', [ ObjetController::class, 'getObjectById' ]);
+		$router->get('/accueil', [ ObjetController::class, 'getObjectHorsProprietaire' ]);
 	});
 	
 }, [ SecurityHeadersMiddleware::class ]);
