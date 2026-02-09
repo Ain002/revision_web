@@ -15,3 +15,8 @@ CREATE TABLE `type_user`(
 );
 ALTER TABLE
     `user` ADD CONSTRAINT `user_idtype_foreign` FOREIGN KEY(`idtype`) REFERENCES `type_user`(`id`);
+
+create table categorie(
+    id_categorie INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    nom VARCHAR(255) NOT NULL
+);
