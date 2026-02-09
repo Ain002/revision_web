@@ -14,8 +14,18 @@ class ObjetController {
 	}
 
     public function myObjects() {
+        if(session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user_id'])) {
+            return null;
+        }
+
+        $userId = $_SESSION['user_id'];
+        
         $objetModel = new ObjetModel();
-        $mesObjets = $objetModel->getObjectByOwner($this->app->get('user_id'));
+        $mesObjets = $objetModel->getObjectByOwner($userId);
 
         // Render the view with the list of objects
         $this->app->render('myObjet', [
@@ -42,8 +52,17 @@ class ObjetController {
     }
 
     public function getObjectHorsProprietaire() {
+        if(session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        if (!isset($_SESSION['user_id'])) {
+            return null;
+        }
+
+        $userId = $_SESSION['user_id'];
         $objetModel = new ObjetModel();
-        $objet = $objetModel->getObjectHorsProprietaire($id);
+        $objet = $objetModel->getObjectHorsProprietaire($userId);
         if (!$objet) {
             $this->app->notFound();
             return;
