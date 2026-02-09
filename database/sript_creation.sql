@@ -7,7 +7,7 @@ CREATE TABLE `user`(
     `nom` VARCHAR(255) NOT NULL,
     `mail` VARCHAR(255) NOT NULL,
     `pwd` VARCHAR(255) NOT NULL,
-    `idtype` INT NOT NULL
+    `idtype` INT UNSIGNED NOT NULL
 );
 CREATE TABLE `type_user`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
