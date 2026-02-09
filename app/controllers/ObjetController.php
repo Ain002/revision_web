@@ -18,7 +18,7 @@ class ObjetController {
         $mesObjets = $objetModel->getObjectByOwner($this->app->get('user_id'));
 
         // Render the view with the list of objects
-        $this->app->render('MyObjet', [
+        $this->app->render('myObjet', [
             'objet' => $mesObjets
         ]);
     }
