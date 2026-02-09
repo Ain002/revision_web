@@ -35,9 +35,23 @@ class ObjetController {
         $images = $objetModel->getObjectImages($id);
 
         // Render the view with the object details and images
-        $this->app->render('ObjetDetails', [
+        $this->app->render('ficheObjet', [
             'objet' => $objet,
             'images' => $images
+        ]);
+    }
+
+    public function getObjectHorsProprietaire($id) {
+        $objetModel = new ObjetModel();
+        $objet = $objetModel->getObjectHorsProprietaire($id);
+        if (!$objet) {
+            $this->app->notFound();
+            return;
+        }
+
+        // Render the view with the object details and images
+        $this->app->render('accueil', [
+            'objet' => $objet
         ]);
     }
 
