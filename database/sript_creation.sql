@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS `echange`;
+
+use echange;
+
+CREATE TABLE `user`(
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `nom` VARCHAR(255) NOT NULL,
+    `mail` VARCHAR(255) NOT NULL,
+    `pwd` VARCHAR(255) NOT NULL,
+    `idtype` INT NOT NULL
+);
+CREATE TABLE `type_user`(
+    `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    `desc` VARCHAR(255) NOT NULL
+);
+ALTER TABLE
+    `user` ADD CONSTRAINT `user_idtype_foreign` FOREIGN KEY(`idtype`) REFERENCES `type_user`(`id`);
