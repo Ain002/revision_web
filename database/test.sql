@@ -1,0 +1,1 @@
+INSERT INTO type_user (desc) VALUES ('admin'), ('visiteur');
