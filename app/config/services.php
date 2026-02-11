@@ -80,7 +80,14 @@ if (Debugger::$showBar === true && php_sapi_name() !== 'cli') {
 // Uncomment and configure the following for your database:
 
 // MySQL Example:
-$dsn = 'mysql:host=' . $config['database']['host'] . ';dbname=' . $config['database']['dbname'] . ';charset=utf8mb4';
+ $dsn = 'mysql:host=' . $config['database']['host'];
+ if (!empty($config['database']['port'])) {
+	$dsn .= ';port=' . $config['database']['port'];
+ }
+ if (!empty($config['database']['unix_socket'])) {
+	$dsn .= ';unix_socket=' . $config['database']['unix_socket'];
+ }
+ $dsn .= ';dbname=' . $config['database']['dbname'] . ';charset=utf8mb4';
 
 // SQLite Example:
 // $dsn = 'sqlite:' . $config['database']['file_path'];
