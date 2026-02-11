@@ -17,7 +17,7 @@ class CategorieController{
         $db = Flight::db();
         $model = new CategorieModel($db);
         $categories = $model->getAllCategories();
-        $this->app->render('categories', ['categories' => $categories]);
+        $this->app->render('index', ['categories' => $categories]);
     }
 
     public function insertCategorie(){
@@ -32,14 +32,14 @@ class CategorieController{
         $model = new CategorieModel($db);
         $model->insertCategorie($nom);
 
-        Flight::redirect('/listCategories');
+        Flight::redirect('/inserCat');
     }
 
     public function removeCategorie($id) {
         $db = Flight::db();
         $model = new CategorieModel($db);
         $model->removeCategorie($id);
-        Flight::redirect('/listCategories');
+        Flight::redirect('/');
     }
 
     public function updateCategorie(){
@@ -50,11 +50,11 @@ class CategorieController{
             return;
         }
         $nom   = $_POST['nom'];
-
+        $id = $_POST['id_categorie'];
         $model = new CategorieModel($db);
-        $model->updateCategorie($nom);
+        $model->updateCategorie($nom,$id);
 
-        Flight::redirect('/listCategories');
+        Flight::redirect('/');
     }
 
 }
