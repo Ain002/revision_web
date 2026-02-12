@@ -27,9 +27,25 @@ class ObjetController {
         $objetModel = new ObjetModel();
         $mesObjets = $objetModel->getObjectByOwner($userId);
 
-        // Render the view with the list of objects
+        // Build images array for the view: flat list of images with objet_id => url/path
+        $images = [];
+        foreach ($mesObjets as $o) {
+            $oid = $o['id'] ?? $o['objet_id'] ?? $o['id_objet'] ?? null;
+            if ($oid) {
+                $imgs = $objetModel->getObjectImages($oid);
+                foreach ($imgs as $img) {
+                    $images[] = [
+                        'objet_id' => $oid,
+                        'url' => $img['nom'] ?? $img['path'] ?? $img['filename'] ?? null,
+                    ];
+                }
+            }
+        }
+
+        // Render the view with the list of objects and images
         $this->app->render('myObjet', [
-            'objet' => $mesObjets
+            'mesObjets' => $mesObjets,
+            'images' => $images,
         ]);
     }
 

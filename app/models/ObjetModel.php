@@ -4,7 +4,7 @@ namespace app\models;
 
 use flight;
 
-class UserModel {
+class ObjetModel {
 
     public function getAllObjects() {
         /** @var PDO $db */
@@ -13,7 +13,7 @@ class UserModel {
         $stmt = $db->prepare("SELECT * FROM objets ORDER BY id");
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getObjectById($id) {
@@ -24,7 +24,7 @@ class UserModel {
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function getObjectImages($id) {
@@ -35,7 +35,7 @@ class UserModel {
         $stmt->bindParam(':id', $id, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getObjectByCategory($categoryId) {
@@ -46,7 +46,7 @@ class UserModel {
         $stmt->bindParam(':categoryId', $categoryId, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getObjectByOwner($ownerId) {
@@ -57,7 +57,7 @@ class UserModel {
         $stmt->bindParam(':ownerId', $ownerId, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function addObject($data) {
@@ -128,7 +128,7 @@ class UserModel {
         $stmt->bindParam(':proprietaire_id', $proprietaireId, \PDO::PARAM_INT);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
 
