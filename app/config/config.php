@@ -7,7 +7,6 @@
  * Copy this file to config.php and update values as needed.
  * All settings are required unless marked as optional.
  *
- * Example:
  *   cp app/config/config_sample.php app/config/config.php
  *
  * This file is NOT tracked by git. Store sensitive credentials here.
