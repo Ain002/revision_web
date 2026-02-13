@@ -17,7 +17,7 @@ class CategorieController{
         $db = Flight::db();
         $model = new CategorieModel($db);
         $categories = $model->getAllCategories();
-        $this->app->render('/listCategories', ['categories' => $categories]);
+        $this->app->render('listCategories', ['categories' => $categories]);
     }
     public function insertCategorie(){
         $db = Flight::db();
