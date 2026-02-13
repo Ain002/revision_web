@@ -26,6 +26,7 @@ $router->group('', function(Router $router) use ($app) {
 	$router->group('/users', function() use ($router) {
 		$router->post('/add', [ UserController::class, 'add' ]);
 		$router->post('/login', [ UserController::class, 'verifier' ]);
+		$router->post('/logout', [ UserController::class, 'logout' ]);
 		$router->delete('/@id:[0-9]', [ UserController::class, 'delete' ]);
 		$router->post('/@id:[0-9]', [ UserController::class, 'update' ]);
 	});
