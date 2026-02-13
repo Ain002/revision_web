@@ -11,8 +11,8 @@
         <p>Utilisez le menu pour naviguer dans les différentes sections.</p>
         <nav>
             <ul>
-                <li><a href="/mesObjets">Mes Objets</a></li>
-                <li><a href="/ajouterObjet">Ajouter un Objet</a></li>
+                <li><a href="/objet/mesObjets">Mes Objets</a></li>
+                <li><a href="/objet/ajouterObjet">Ajouter un Objet</a></li>
             </ul>
         </nav>
     </header>

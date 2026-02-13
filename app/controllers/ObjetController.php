@@ -145,7 +145,7 @@ class ObjetController {
             }
         }
 
-        $this->app->redirect('/mesObjets');
+    $this->app->redirect('/objet/mesObjets');
     }
 
     public function editObjet($id) {
@@ -191,7 +191,20 @@ class ObjetController {
             }
         }
 
-        $this->app->redirect('/mesObjets');
+        $this->app->redirect('/objet/mesObjets');
+
+    }
+
+    public function deleteObjet($id) {
+        if(session_status() === PHP_SESSION_NONE) session_start();
+        if (!isset($_SESSION['user_id'])) {
+            $this->app->halt(403, 'Unauthorized');
+        }
+        $objetModel = new ObjetModel();
+        // TODO: check ownership
+        $ok = $objetModel->deleteObject($id);
+        if (!$ok) $this->app->halt(500, 'Erreur suppression');
+        $this->app->redirect('/objet/mesObjets');
     }
 
 }

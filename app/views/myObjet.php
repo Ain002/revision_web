@@ -10,7 +10,7 @@
         <h1>Mes objets</h1>
 
         <p>
-            <a href="/objet/create" style="display:inline-block;padding:8px 12px;background:#2d89ef;color:#fff;border-radius:4px;text-decoration:none;">Ajouter un objet</a>
+            <a href="/objet/ajouterObjet" style="display:inline-block;padding:8px 12px;background:#2d89ef;color:#fff;border-radius:4px;text-decoration:none;">Ajouter un objet</a>
         </p>
 
         <div>

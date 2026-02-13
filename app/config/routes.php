@@ -35,6 +35,7 @@ $router->group('', function(Router $router) use ($app) {
 		$router->get('/@id:[0-9]+/edit', [ ObjetController::class, 'editObjet' ]);
 		$router->post('/@id:[0-9]+/update', [ ObjetController::class, 'updateObjet' ]);
 		$router->get('/@id:[0-9]+', [ ObjetController::class, 'getObjectById' ]);
+		$router->post('/@id:[0-9]+/delete', [ ObjetController::class, 'deleteObjet' ]);
 		$router->get('/accueil', [ ObjetController::class, 'getObjectHorsProprietaire' ]);
 	});
 	
