@@ -2,6 +2,7 @@
 
 use app\controllers\ApiExampleController;
 use app\controllers\CategorieController;
+use app\controllers\ObjetController;
 use app\controllers\UserController;
 use app\middlewares\SecurityHeadersMiddleware;
 use flight\Engine;
@@ -38,6 +39,17 @@ $router->group('', function(Router $router) use ($app) {
 		$app->render('inscription');
 	});
 
+	$router->group('/objet', function() use ($router) {
+		$router->get('/mesObjets', [ ObjetController::class, 'myObjects' ]);
+		$router->get('/ajouterObjet', [ ObjetController::class, 'createObjet' ]);
+		$router->post('/store', [ ObjetController::class, 'storeObjet' ]);
+		$router->get('/@id:[0-9]+/edit', [ ObjetController::class, 'editObjet' ]);
+		$router->post('/@id:[0-9]+/update', [ ObjetController::class, 'updateObjet' ]);
+		$router->get('/@id:[0-9]+', [ ObjetController::class, 'getObjectById' ]);
+		$router->post('/@id:[0-9]+/delete', [ ObjetController::class, 'deleteObjet' ]);
+		$router->get('/accueil', [ ObjetController::class, 'getObjectHorsProprietaire' ]);
+	});
+	
 	$router->get('/hello', function() use ($app) {
 		$app->render('hello');
 	});
