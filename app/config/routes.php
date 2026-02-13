@@ -30,6 +30,10 @@ $router->group('', function(Router $router) use ($app) {
 
 	$router->group('/objet', function() use ($router) {
 		$router->get('/mesObjets', [ ObjetController::class, 'myObjects' ]);
+		$router->get('/ajouterObjet', [ ObjetController::class, 'createObjet' ]);
+		$router->post('/store', [ ObjetController::class, 'storeObjet' ]);
+		$router->get('/@id:[0-9]+/edit', [ ObjetController::class, 'editObjet' ]);
+		$router->post('/@id:[0-9]+/update', [ ObjetController::class, 'updateObjet' ]);
 		$router->get('/@id:[0-9]+', [ ObjetController::class, 'getObjectById' ]);
 		$router->get('/accueil', [ ObjetController::class, 'getObjectHorsProprietaire' ]);
 	});

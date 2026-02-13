@@ -63,7 +63,6 @@ class ObjetModel {
     public function addObject($data) {
         /** @var PDO $db */
         $db = Flight::db(); 
-
         $stmt = $db->prepare("INSERT INTO objets (proprietaire_id, categorie_id, nom, description, date_ajout, prix) VALUES (:proprietaire_id, :categorie_id, :nom, :description, NOW(), :prix)");
         $stmt->bindParam(':proprietaire_id', $data['proprietaire_id'], \PDO::PARAM_INT);
         $stmt->bindParam(':categorie_id', $data['categorie_id'], \PDO::PARAM_INT);
@@ -71,7 +70,11 @@ class ObjetModel {
         $stmt->bindParam(':description', $data['description'], \PDO::PARAM_STR);
         $stmt->bindParam(':prix', $data['prix'], \PDO::PARAM_STR);
 
-        return $stmt->execute();
+        $ok = $stmt->execute();
+        if ($ok) {
+            return (int)$db->lastInsertId();
+        }
+        return false;
     }
 
     public function updateObject($id, $data) {
