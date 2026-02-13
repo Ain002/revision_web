@@ -17,45 +17,49 @@ class CategorieController{
         $db = Flight::db();
         $model = new CategorieModel($db);
         $categories = $model->getAllCategories();
-        $this->app->render('index', ['categories' => $categories]);
+        $this->app->render('/listCategories', ['categories' => $categories]);
     }
-
     public function insertCategorie(){
         $db = Flight::db();
-
+    
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            Flight::redirect('/');
+            Flight::redirect('/listCategories');
             return;
         }
-        $nom   = $_POST['nom'];
-
+    
+        $nom = $_POST['nom'];
+    
         $model = new CategorieModel($db);
         $model->insertCategorie($nom);
-
-        Flight::redirect('/inserCat');
+    
+        Flight::redirect('/listCategories');
     }
-
+    
     public function removeCategorie($id) {
         $db = Flight::db();
         $model = new CategorieModel($db);
         $model->removeCategorie($id);
-        Flight::redirect('/');
+        Flight::redirect('/listCategories');
     }
+    
 
     public function updateCategorie(){
         $db = Flight::db();
-
+    
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            Flight::redirect('/');
+            Flight::redirect('/listCategories');
             return;
         }
-        $nom   = $_POST['nom'];
-        $id = $_POST['id_categorie'];
+    
+        $nom = $_POST['nom'];
+        $id  = $_POST['id'];
+    
         $model = new CategorieModel($db);
-        $model->updateCategorie($nom,$id);
-
-        Flight::redirect('/');
+        $model->updateCategorie($nom, $id);
+    
+        Flight::redirect('/listCategories');
     }
+    
 
 }
 ;

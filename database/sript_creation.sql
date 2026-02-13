@@ -11,8 +11,9 @@ CREATE TABLE `user`(
 );
 CREATE TABLE `type_user`(
     `id` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `desc` VARCHAR(255) NOT NULL
+    `description` VARCHAR(255) NOT NULL
 );
+
 ALTER TABLE
     `user` ADD CONSTRAINT `user_idtype_foreign` FOREIGN KEY(`idtype`) REFERENCES `type_user`(`id`);
 

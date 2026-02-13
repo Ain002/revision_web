@@ -34,6 +34,7 @@
             })
             .then(response => response.json())
             .then(data => {
+                console.log(data);
                 if (data.user) {
                     alert('Login successful! Welcome ' + data.user.nom);
                     const userType = data.user.idtype;
