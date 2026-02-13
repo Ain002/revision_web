@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fiche objet - <?php echo htmlspecialchars($objet['nom'] ?? 'Objet'); ?></title>
+    <link rel="stylesheet" href="/css/styles.css">
     <style>
-        .thumb { max-width:180px; max-height:140px; object-fit:cover; margin:6px; border:1px solid #ccc; padding:4px; background:#fff; }
-        .images { display:flex; flex-wrap:wrap; align-items:center; }
-        .meta { margin:12px 0; }
+        /* small overrides */
+        .thumb { max-width:180px; max-height:140px; }
     </style>
 </head>
 <body>
