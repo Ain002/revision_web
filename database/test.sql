@@ -1,1 +1,1 @@
-INSERT INTO type_user (desc) VALUES ('admin'), ('visiteur');
+INSERT INTO type_user (description) VALUES ('admin'), ('visiteur');
