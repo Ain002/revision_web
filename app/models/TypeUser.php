@@ -6,17 +6,17 @@ class TypeUser {
 
     private $id;
 
-    private $desc;
+    private $description; // changé
 
-    public function __construct($id, $desc)
+    public function __construct($id, $description)
     {
         $this->id = $id;
-        $this->desc = $desc;
+        $this->description = $description; // changé
     }
 
     public function addModel($db) {
-        $stmt = $db->prepare("INSERT INTO type_user (desc) VALUES (:desc)");
-        $stmt->bindParam(':desc', $this->desc);
+        $stmt = $db->prepare("INSERT INTO type_user (description) VALUES (:description)");
+        $stmt->bindParam(':description', $this->description);
         return $stmt->execute();
     }
 
@@ -31,7 +31,7 @@ class TypeUser {
         return $this->id;
     }
 
-    public function getDesc() {
-        return $this->desc;
+    public function getDescription() { // changé
+        return $this->description;
     }
 }
