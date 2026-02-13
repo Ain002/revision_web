@@ -1,6 +1,7 @@
 <?php
 
 use app\controllers\ApiExampleController;
+use app\controllers\CategorieController;
 use app\controllers\ObjetController;
 use app\controllers\UserController;
 use app\middlewares\SecurityHeadersMiddleware;
@@ -19,14 +20,10 @@ if (empty($app) === true) {
 // This wraps all routes in the group with the SecurityHeadersMiddleware
 $router->group('', function(Router $router) use ($app) {
 
-	
-
-	
-	
-
 	$router->group('/users', function() use ($router) {
 		$router->post('/add', [ UserController::class, 'add' ]);
 		$router->post('/login', [ UserController::class, 'verifier' ]);
+		$router->post('/logout', [ UserController::class, 'logout' ]);
 		$router->delete('/@id:[0-9]', [ UserController::class, 'delete' ]);
 		$router->post('/@id:[0-9]', [ UserController::class, 'update' ]);
 	});
@@ -58,4 +55,20 @@ $router->group('', function(Router $router) use ($app) {
 		$app->render('hello');
 	});
 
+	$router->get('/listCategories', [ CategorieController::class, 'getAllCategories' ]);
+
+	$router->group('/categories', function() use ($router) {
+
+		$router->get('', [ CategorieController::class, 'getAllCategories' ]);
+	
+		$router->post('/insert', [ CategorieController::class, 'insertCategorie' ]);
+	
+		$router->get('/delete/@id:[0-9]+', [ CategorieController::class, 'removeCategorie' ]);
+	
+		$router->post('/update', [ CategorieController::class, 'updateCategorie' ]);
+	
+	});
+	
+
+	//$router->get('/supprimer/@id', [ CategorieController::class, 'removeCategorie' ]);
 }, [ SecurityHeadersMiddleware::class ]);
